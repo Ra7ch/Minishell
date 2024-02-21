@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mben-zeh <mben-zeh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: raitmous <raitmous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 02:13:02 by raitmous          #+#    #+#             */
-/*   Updated: 2023/06/25 04:22:13 by mben-zeh         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:41:11 by raitmous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # include <sys/stat.h>
 # include <termios.h>
 # include <unistd.h>
+# include <sys/wait.h>
+# include <sys/ioctl.h>
 # define ERROR_SYNTAX "\x1b[1;31mminishell: syntax error\n"
 # define PROMPT "\x1b[1;36mMinish$>\x1b[1;0m \x1b[1;38m"
 
@@ -36,7 +38,7 @@ typedef struct s_global
 	int				exit_inpipe;
 }					t_global;
 
-t_global			g_v;
+static t_global			g_v;
 
 typedef enum TokenType
 {
