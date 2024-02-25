@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "minishell.h"
-
+t_global *g_v = NULL;
 void	minishell(char *str, t_env **env, t_list *list, t_data *data)
 {
 	t_data	*root;
