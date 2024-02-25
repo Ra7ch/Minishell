@@ -109,7 +109,6 @@ t_word	*token_words(char *str)
 	t_word	*p;
 	int		i;
 	int		type;
-	int		p_type;
 	int		j;
 
 	j = 0;
@@ -118,7 +117,6 @@ t_word	*token_words(char *str)
 	type = STATE_NORMAL;
 	while (str[i])
 	{
-		p_type = type;
 		if (token_word_sub(&type, &i, str) == 0)
 			continue ;
 		creat_word(str[i], &p, type, j);

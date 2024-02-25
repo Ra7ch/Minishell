@@ -30,7 +30,7 @@ void	ft_unset(t_env **env, char **str, t_env *node, t_env *temp)
 	int	i;
 
 	i = 0;
-	g_v.exit_status = 0;
+	g_v->exit_status = 0;
 	while (str && str[i])
 	{
 		if (!ft_strcmp("_", str[i]) && ++i)
@@ -78,16 +78,16 @@ void	ft_exit(char **arg)
 	int	i;
 
 	i = 0;
-	if (!g_v.exit_inpipe)
+	if (!g_v->exit_inpipe)
 		printf("exit\n");
 	if (arg && !*arg)
-		exit(g_v.exit_status);
+		exit(g_v->exit_status);
 	while (arg && arg[i])
 	{
 		if (i)
 		{
 			ft_putstr("exit: too many arguments\n", 2);
-			g_v.exit_status = 1;
+			g_v->exit_status = 1;
 			return ;
 		}
 		if (ft_is_number(arg[i]))
@@ -120,5 +120,5 @@ void	ft_env(t_env *env, int is_export)
 		}
 		env = env->next;
 	}
-	g_v.exit_status = 0;
+	g_v->exit_status = 0;
 }

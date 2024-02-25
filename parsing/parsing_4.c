@@ -56,7 +56,7 @@ t_data	*ft_full_data(t_list *list, t_env *env)
 		if (list->token == FILE_IN || list->token == WORD_LIM)
 		{
 			ft_fileadd_back(&files, ft_filenew(list, env));
-			if (g_v.heredoc == 1)
+			if (g_v->heredoc == 1)
 				return (free(str), ft_freedata(data, 1), ft_freefile(files),
 					NULL);
 		}

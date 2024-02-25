@@ -17,7 +17,7 @@ void	minishell(char *str, t_env **env, t_list *list, t_data *data)
 	t_data	*root;
 
 	root = NULL;
-	g_v.heredoc = 0;
+	g_v->heredoc = 0;
 	ft_putstr("\x1b[0;0m", 1);
 	if (str)
 	{
@@ -37,7 +37,7 @@ void	minishell(char *str, t_env **env, t_list *list, t_data *data)
 		free(str);
 	}
 	else
-		(printf("exit\n"), exit(g_v.exit_status));
+		(printf("exit\n"), exit(g_v->exit_status));
 }
 
 void	handle_sigint(int sig)
@@ -47,7 +47,7 @@ void	handle_sigint(int sig)
 		ioctl(STDIN_FILENO, TIOCSTI, "\n");
 		rl_replace_line("", 0);
 		rl_on_new_line();
-		g_v.exit_status = 1;
+		g_v->exit_status = 1;
 	}
 }
 
@@ -67,7 +67,7 @@ char	*ft_prompt(void)
 	i = 0;
 	while (p[i])
 		i++;
-	if (g_v.exit_status == 0)
+	if (g_v->exit_status == 0)
 		tmp = ft_strdup("\xF0\x9F\x98\x8A \x1b[1;36m");
 	else
 		tmp = ft_strdup("\xF0\x9F\x98\xA1 \x1b[1;36m");
@@ -91,8 +91,8 @@ char	*ft_readline(void)
 	tcgetattr(STDERR_FILENO, &original);
 	term.c_lflag &= ~(ECHOCTL);
 	tcsetattr(STDERR_FILENO, TCSANOW, &term);
-	if (g_v.heredoc == 1)
-		g_v.exit_status = 1;
+	if (g_v->heredoc == 1)
+		g_v->exit_status = 1;
 	prompt = ft_prompt();
 	signal(SIGINT, &handle_sigint);
 	str = readline(prompt);
@@ -102,14 +102,17 @@ char	*ft_readline(void)
 	return (str);
 }
 
-int	main(int ac, char **av, char **envp)
+int main (int ac, char **av, char **envp)
 {
 	char	*str;
 	t_env	*env;
 
+g_v = malloc(sizeof(t_global));
 	env = NULL;
 	ac = 0;
 	av = NULL;
+	(void)ac;
+	(void)av;
 	ft_full_env(&env, envp, NULL);
 	signal(SIGQUIT, SIG_IGN);
 	while (1)
@@ -117,5 +120,5 @@ int	main(int ac, char **av, char **envp)
 		str = ft_readline();
 		minishell(str, &env, NULL, NULL);
 	}
-	return (g_v.exit_status);
+	return (g_v->exit_status);
 }

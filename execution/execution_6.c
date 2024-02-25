@@ -20,7 +20,7 @@ void	ft_execution_sub1_child(t_data **data, t_env **env, int *par)
 	if ((*data)->fdout > 2)
 		dup2((*data)->fdout, STDOUT_FILENO);
 	ft_exection((*data)->left, env);
-	exit(g_v.exit_status);
+	exit(g_v->exit_status);
 }
 
 int	ft_execution_sub1(t_data **data, t_env **env, int *par, int *pfd)
@@ -40,8 +40,8 @@ int	ft_execution_sub1(t_data **data, t_env **env, int *par, int *pfd)
 		if ((*data)->fdout > 2)
 			(dup2(pfd[1], STDOUT_FILENO),
 				close((*data)->fdout));
-		waitpid(pid, &g_v.exit_status, 0);
-		g_v.exit_status = WEXITSTATUS(g_v.exit_status);
+		waitpid(pid, &g_v->exit_status, 0);
+		g_v->exit_status = WEXITSTATUS(g_v->exit_status);
 	}
 	return (1);
 }
@@ -53,13 +53,13 @@ int	ft_execution_sub2_sub1(t_data **data, t_env **env, int *pid, int **fd)
 		return (0);
 	if (*pid == 0)
 	{
-		g_v.exit_inpipe = 1;
+		g_v->exit_inpipe = 1;
 		close((*fd)[0]);
 		dup2((*fd)[1], STDOUT_FILENO);
 		ft_exection((*data)->left, env);
-		exit(g_v.exit_status);
+		exit(g_v->exit_status);
 	}
-	g_v.exit_status = 0;
+	g_v->exit_status = 0;
 	return (1);
 }
 
@@ -70,11 +70,11 @@ int	ft_execution_sub2_sub2(t_data **data, t_env **env, int *pid, int **fd)
 		return (0);
 	if (*pid == 0)
 	{
-		g_v.exit_inpipe = 1;
+		g_v->exit_inpipe = 1;
 		close((*fd)[1]);
 		dup2((*fd)[0], STDIN_FILENO);
 		ft_exection((*data)->right, env);
-		exit(g_v.exit_status);
+		exit(g_v->exit_status);
 	}
 	return (1);
 }
@@ -95,9 +95,9 @@ int	ft_execution_sub2(t_data **data, t_env **env, int *par, int *pid)
 		return (0);
 	close(fd[1]);
 	close(fd[0]);
-	waitpid(pid[0], &g_v.exit_status, 0);
-	waitpid(pid[1], &g_v.exit_status, 0);
-	g_v.exit_status = WEXITSTATUS(g_v.exit_status);
+	waitpid(pid[0], &g_v->exit_status, 0);
+	waitpid(pid[1], &g_v->exit_status, 0);
+	g_v->exit_status = WEXITSTATUS(g_v->exit_status);
 	free(fd);
 	return (1);
 }

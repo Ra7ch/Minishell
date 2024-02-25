@@ -46,7 +46,7 @@ void	ft_echo(char **str)
 	}
 	if (!n)
 		ft_putstr("\n", 1);
-	g_v.exit_status = 0;
+	g_v->exit_status = 0;
 }
 
 int	is_var(char *str, int *equal, int *add)

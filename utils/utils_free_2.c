@@ -15,9 +15,7 @@
 void	ft_freedata(t_data *lst, int all)
 {
 	t_data	*node;
-	int		i;
 
-	i = 0;
 	node = NULL;
 	if (!lst)
 		return ;

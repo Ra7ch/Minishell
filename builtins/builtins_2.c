@@ -84,8 +84,8 @@ void	ft_cd(t_data *data, t_env **env)
 	{
 		if (n != -2)
 			perror(data->arg[1]);
-		g_v.exit_status = 1;
+		g_v->exit_status = 1;
 		return ;
 	}
-	g_v.exit_status = 0;
+	g_v->exit_status = 0;
 }

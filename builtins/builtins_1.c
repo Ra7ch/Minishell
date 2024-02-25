@@ -60,7 +60,7 @@ void	ft_builtins_sub(char **str, t_env **env, t_data *data, int x)
 		ft_putstr(*str, 1);
 		ft_putstr("\n", 1);
 		free(*str);
-		g_v.exit_status = 0;
+		g_v->exit_status = 0;
 	}
 }
 
@@ -74,7 +74,7 @@ int	ft_builtins(t_data *data, t_env **env, int x)
 	else if (x == 3)
 	{
 		if (data->arg[1])
-			return (perror(data->arg[1]), g_v.exit_status = 127, 1);
+			return (perror(data->arg[1]), g_v->exit_status = 127, 1);
 		ft_env(*env, 0);
 	}
 	else if (x == 4)

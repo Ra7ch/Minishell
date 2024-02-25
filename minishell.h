@@ -38,7 +38,7 @@ typedef struct s_global
 	int				exit_inpipe;
 }					t_global;
 
-static t_global			g_v;
+t_global			*g_v ;
 
 typedef enum TokenType
 {

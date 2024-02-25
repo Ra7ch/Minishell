@@ -67,7 +67,7 @@ void	ft_export_error(char **str, int i, int is_export)
 		ft_putstr("unset: `", 2);
 	ft_putstr(str[i], 2);
 	ft_putstr("': not a valid identifier\n", 2);
-	g_v.exit_status = 1;
+	g_v->exit_status = 1;
 }
 
 void	ft_export(t_env **env, char **str)
@@ -79,7 +79,7 @@ void	ft_export(t_env **env, char **str)
 
 	add = 0;
 	i = 0;
-	g_v.exit_status = 0;
+	g_v->exit_status = 0;
 	while (str[i])
 	{
 		equal = 0;

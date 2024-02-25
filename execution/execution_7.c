@@ -20,14 +20,14 @@ void	ft_execution_sub3(t_data *data, t_env **env, int *par)
 	{
 		*par = 0;
 		ft_exection(data->left, env);
-		if (g_v.exit_status == 0)
+		if (g_v->exit_status == 0)
 			ft_exection(data->right, env);
 	}
 	else if (data->token == TOKEN_OR)
 	{
 		*par = 0;
 		ft_exection(data->left, env);
-		if (g_v.exit_status != 0)
+		if (g_v->exit_status != 0)
 			ft_exection(data->right, env);
 	}
 	else if (!data->left && !data->right)
@@ -56,11 +56,9 @@ int	ft_execution_sub0(t_data *data, int par)
 void	ft_exection(t_data *data, t_env **env)
 {
 	static int	par;
-	int			*fd;
 	int			pfd[2];
 	pid_t		pid[2];
 
-	fd = NULL;
 	if (ft_execution_sub0(data, par) == 0)
 		return ;
 	ft_openfile(data, *env);

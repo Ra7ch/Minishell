@@ -61,7 +61,7 @@ char	*get_expand(t_env *env, char *str)
 		return (ft_strdup("$"));
 	if (!ft_strcmp(str, "?"))
 	{
-		return (free(str), ft_itoa(g_v.exit_status));
+		return (free(str), ft_itoa(g_v->exit_status));
 	}
 	while (env && str)
 	{

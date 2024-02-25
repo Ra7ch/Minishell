@@ -29,6 +29,6 @@ int	ft_strncmp(char *s1, char *s2, size_t n)
 void	syntax_error(t_list *list)
 {
 	ft_putstr(ERROR_SYNTAX, 2);
-	g_v.exit_status = 258;
+	g_v->exit_status = 258;
 	ft_freelist(list);
 }
