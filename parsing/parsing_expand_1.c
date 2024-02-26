@@ -83,7 +83,7 @@ void	inter_expand(char **str, char **string, t_env *env, int use)
 		expand = ft_strjoin(expand, (char []){*(++(*str)), 0});
 	else
 	{
-		while (&str[0][1])
+		while (str[0][1] != '\0')
 		{
 			if ((!ft_isalpha((*str)[1]) && !ft_isdigit((*str)[1])
 					&& (*str)[1] != '_' && (*str)[1] != '~'))
