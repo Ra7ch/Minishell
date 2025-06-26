@@ -12,7 +12,6 @@
 
 #include "minishell.h"
 t_global *g_v = NULL;
-const char *ApiKey = "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";
 
 void	minishell(char *str, t_env **env, t_list *list, t_data *data)
 {
