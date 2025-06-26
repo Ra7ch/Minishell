@@ -26,6 +26,8 @@
 # include <unistd.h>
 # include <sys/wait.h>
 # include <sys/ioctl.h>
+# include <curl/curl.h>
+# include <json-c/json.h>
 # define ERROR_SYNTAX "\x1b[1;31mminishell: syntax error\n"
 # define PROMPT "\x1b[1;36mMinish$>\x1b[1;0m \x1b[1;38m"
 

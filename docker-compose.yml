@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  minishell:
+    build: .
+    container_name: minishell
+    volumes:
+      - ./:/app
+    environment:
+      - GROQ_API_KEY=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
+    stdin_open: true
+    tty: true 
