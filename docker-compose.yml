@@ -6,6 +6,6 @@ services:
     volumes:
       - ./:/app
     environment:
-      - GROQ_API_KEY=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
+      - GROQ_API_KEY=...your_key....
     stdin_open: true
     tty: true 
