@@ -64,9 +64,5 @@ Do you want to run this command? [y/N]: y
 [output of du -sh .]
 ```
 
-## Authors
-- raitmous <raitmous@student.42.fr>
-- mben-zeh <mben-zeh@student.42.fr>
-
 ## License
 This project is for educational purposes. 
